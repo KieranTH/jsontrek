@@ -36,7 +36,10 @@ pub fn sum(a: i32, b: i32) -> i32 {
 pub fn parse(env: Env, obj: String, path: String) -> String {
   let json_value: Value = serde_json::from_str(&obj).expect("Invalid JSON string");
   let result = select(&json_value, &path).expect("Invalid JSON path");
+
+  // We need to check what this is... the tests are showing undefined when they maybe shouldn't
   let stringified = serde_json::to_string(&result).expect("Invalid JSON string");
+  
   // let mut array = env.create_array(result.len() as u32)?;
 
   // for (i, value) in result.iter().enumerate() {
