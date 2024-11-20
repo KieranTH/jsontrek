@@ -86,6 +86,7 @@ name = "jsontrek"
 version = "0.0.0"
 dependencies = [
  "jsonpath_lib",
+ "log",
  "napi",
  "napi-build",
  "napi-derive",
