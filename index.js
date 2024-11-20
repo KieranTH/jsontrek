@@ -310,6 +310,7 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { parse } = nativeBinding
+const { sum, parse } = nativeBinding
 
+module.exports.sum = sum
 module.exports.parse = parse

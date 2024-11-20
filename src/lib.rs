@@ -9,10 +9,10 @@ use napi::{bindgen_prelude::Array, Env, JsError};
 use serde_json::Value;
 use jsonpath_lib::select;
 
-// #[napi]
-// pub fn sum(a: i32, b: i32) -> i32 {
-//   a + b
-// }
+#[napi]
+pub fn sum(a: i32, b: i32) -> i32 {
+  a + b
+}
 
 #[napi]
 pub fn parse(env: Env, obj: String, path: String) -> Result<Array, JsError> {
