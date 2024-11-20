@@ -146,7 +146,7 @@ jobs:
           name: bindings-${{ matrix.settings.target }}
           path: ${{ env.APP_NAME }}.*.node
           if-no-files-found: error
-  build-freebsd:
+  # build-freebsd:
     runs-on: macos-13
     name: Build FreeBSD
     steps:
