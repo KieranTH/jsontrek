@@ -1,31 +1,21 @@
-#![deny(clippy::all)]
-
-#[macro_use]
-extern crate napi_derive;
-extern crate serde_json;
-extern crate serde_json_path;
-
 use serde_json::Value;
-use serde_json_path::{JsonPath};
+use serde_json_path::JsonPath;
+use wasm_bindgen::prelude::*;
 
-#[napi]
-pub fn sum(a: i32, b: i32) -> i32 {
-  a + b
-}
+#[wasm_bindgen]
+pub fn parse(obj: &str, path: String) -> String {
+    let json_value: Value = serde_json::from_str(obj).expect("Invalid JSON string");
+    let path = JsonPath::parse(path.as_str()).unwrap();
+    let search_result = path.query(&json_value);
 
-#[napi]
-pub fn parse( obj: Value, path: String) -> Vec<Value> {
-  // let data: Value = serde_json::from_str(&obj).unwrap();
-  let path = JsonPath::parse(path.as_str()).unwrap();
-  let search_result = path.query(&obj);
-
-  // Create Vector for the search result
-  let mut array = Vec::new();
-  for value in search_result {
-    let c = value.clone();
-    if c != Value::Null {
-      array.push(value.clone());
+    // Create Vector for the search result
+    let mut array = Vec::new();
+    for value in search_result {
+        let c = value.clone();
+        if c != Value::Null {
+        array.push(value.clone());
+        }
     }
-  }
-  array
+    let result = serde_json::to_string(&array).unwrap();
+    result
 }
