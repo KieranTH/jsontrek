@@ -1,9 +1,13 @@
 import { parse } from '../index.js'
-import {paths} from './paths.mjs'
-import { largeObject} from './objects.mjs'
+import {depthPath, paths} from './paths.mjs'
+import { depth, largeObject} from './objects.mjs'
 
 paths.forEach((path) => {
     console.log('Path', path)
-    const result = JSON.parse(parse(JSON.stringify(largeObject), path))[0]
+    const result = parse(largeObject, path)
     console.log('From native', result)
 })
+
+console.log("Depth filter")
+const result = parse(depth, depthPath)
+console.log("From native", result)

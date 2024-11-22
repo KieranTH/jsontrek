@@ -12,5 +12,6 @@ export const filteredPath4 = '$.e.j';
 
 export const filteredPath5 = '$..*[?(@ > 10)]';
 
+export const depthPath = "$.links.edges[?(@.edges[?(@.blah[?(@.edges[?(@.id == 'deep')])])])].edges[?(@.foo == 'test')].id"
 
 export const paths = [simplePath, complexPath, filteredPath1, filteredPath2, filteredPath3, filteredPath4, filteredPath5];

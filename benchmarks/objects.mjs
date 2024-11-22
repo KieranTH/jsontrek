@@ -155,3 +155,40 @@ export const largeObject = {
         }
     ]
 }
+
+export const depth = {
+    "id": "test",
+    attributes: {
+        edges: [
+            {
+                node: {
+                    id: "attr-1",
+                    value: "Blah"
+                }
+            }
+        ]
+    },
+    links: {
+        "edges": [
+            {
+                "id": "sub",
+                "foo": "bar",
+                "edges": [
+                    {
+                        "id": "sub-sub",
+                        "foo": "test",
+                        "blah": [
+                        {
+                            "edges": [
+                            {
+                                "id": "deep"
+                            }  
+                            ]
+                        }
+                        ]
+                    }  
+                ]
+            }
+        ]
+    }
+  }
