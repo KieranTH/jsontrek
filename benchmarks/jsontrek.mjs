@@ -1,4 +1,4 @@
-import {parse} from '../node/dist/jsontrek.js'
+import {parse} from '../builds/web/pkg/jsontrek.js'
 import {depthPath, paths} from './paths.mjs'
 import { depth, largeObject} from './objects.mjs'
 
