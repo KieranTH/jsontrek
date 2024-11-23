@@ -17,7 +17,17 @@ tasks:
     cmds:
       - echo "Testing..."
   publish:
-    dir: ./builds/node/pkg
+    dir: ./builds/bundle/pkg
     cmds:
       - echo "Publishing..."
       - npm publish
+  patch:
+    cmds:
+      - echo "Patching..."
+      - cargo bump patch
+  release:
+    cmds:
+      - echo "Releasing..."
+      - task patch
+      - task build
+      - task publish
