@@ -39,3 +39,4 @@ export const nestedPath6 = "$.anotherLevel1.anotherLevel2.anotherObject.anotherN
 export const nestedPath7 = "$.anotherLevel1.anotherLevel2.anotherObject.anotherNestedObject.anotherDeeplyNestedObject.*"
 
 export const nestedPaths = [nestedPath1, nestedPath2, nestedPath3, nestedPath4, nestedPath5, nestedPath6, nestedPath7];
+

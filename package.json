@@ -1,0 +1,12 @@
+{
+  "name": "jsontrek",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "Kieran Hughes",
+  "license": "MIT",
+  "description": "jsontrek - A WASM and Rust based JSON Pather.",
+  "devDependencies": {
+    "ava": "^6.2.0"
+  }
+}
