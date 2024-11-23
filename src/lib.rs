@@ -3,10 +3,11 @@ use serde_json_path::JsonPath;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn parse(obj: &str, path: String) -> String {
-    let json_value: Value = serde_json::from_str(obj).expect("Invalid JSON string");
+pub fn parse(obj: JsValue, path: String) -> JsValue {
+    let parsed = serde_wasm_bindgen::from_value(obj).unwrap();
+    // let json_value: Value = serde_json::from_str(obj).expect("Invalid JSON string");
     let path = JsonPath::parse(path.as_str()).unwrap();
-    let search_result = path.query(&json_value);
+    let search_result = path.query(&parsed);
 
     // Create Vector for the search result
     let mut array = Vec::new();
@@ -16,6 +17,7 @@ pub fn parse(obj: &str, path: String) -> String {
         array.push(value.clone());
         }
     }
-    let result = serde_json::to_string(&array).unwrap();
-    result
+
+    let wasm_result = serde_wasm_bindgen::to_value(&array).unwrap();
+    wasm_result
 }
