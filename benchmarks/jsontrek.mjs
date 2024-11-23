@@ -1,4 +1,4 @@
-import {parse} from '../builds/web/pkg/jsontrek.js'
+import {parse} from '../builds/node/pkg/node.js'
 import {depthPath, paths} from './paths.mjs'
 import { depth, largeObject} from './objects.mjs'
 
@@ -10,6 +10,6 @@ paths.forEach((path) => {
     console.log('From native', JSON.stringify(result))
 })
 
-// console.log("Depth filter")
-// const result = parse(depth, depthPath)
-// console.log("From native", result)
+console.log("Depth filter")
+const result = parse(depth, depthPath)
+console.log("From native", result)
