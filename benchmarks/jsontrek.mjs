@@ -1,13 +1,11 @@
 import {parse} from '../builds/node/pkg/node.js'
-import {depthPath, paths} from './paths.mjs'
-import { depth, largeObject} from './objects.mjs'
+import {depthPath, nestedPaths} from './paths.mjs'
+import { depth, largeObject, nested} from './objects.mjs'
 
-const stringObj = JSON.stringify(largeObject)
-
-paths.forEach((path) => {
+nestedPaths.forEach((path) => {
     console.log('Path', path)
-    const result = JSON.parse(parse(stringObj, path))
-    console.log('From native', JSON.stringify(result))
+    const result = parse(nested, path)
+    console.log('From native', result)
 })
 
 console.log("Depth filter")

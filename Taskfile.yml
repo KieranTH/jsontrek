@@ -5,8 +5,13 @@ tasks:
     cmds:
       - echo "Building..."
       - wasm-pack build --target bundler --out-name bundle --out-dir ./builds/bundle/pkg
-      # - wasm-pack build --target web --out-name web --out-dir ./builds/web/pkg
-      # - wasm-pack build --target nodejs --out-name node --out-dir ./builds/node/pkg
+
+  build-node:
+    cmds:
+      - echo "Building..."
+      - wasm-pack build --target nodejs --out-name node --out-dir ./builds/node/pkg
+
+
   build-all:
     cmds:
       - echo "Building..."

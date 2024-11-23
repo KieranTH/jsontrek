@@ -23,3 +23,19 @@ export const depthPath = "$.links.edges[?(@.edges[?(@.blah[?(@.edges[?(@.id == '
 
 export const paths = [simplePath, complexPath, filteredPath1, filteredPath2, filteredPath3, filteredPath4, filteredPath5];
 export const results = [simplePathResult, compelxPathResult, filteredPath1Result, filteredPath2Result, filteredPath3Result, filteredPath4Result, filteredPath5Result];
+
+export const nestedPath1 = "$.level1.level2.level3.level4.level5.array[?(@.id > 1)]"
+
+export const nestedPath2 = "$.level1.level2.level3.level4.level5.array[?(@.details.values[?(@ == 3)])]"
+
+export const nestedPath3 = "$.anotherLevel1.anotherLevel2.anotherArray[?(@.anotherId < 2)]"
+
+export const nestedPath4 = "$.anotherLevel1.anotherLevel2.anotherArray[?(@.anotherDetails.anotherValues[?(@ == 17)])]"
+
+export const nestedPath5 = "$.level1.level2.level3.level4.level5.object.nestedObject.deeplyNestedObject[?(@.deepKey1 == 'deepValue1')]"
+
+export const nestedPath6 = "$.anotherLevel1.anotherLevel2.anotherObject.anotherNestedObject.anotherDeeplyNestedObject[?(@.anotherDeepKey2 == 'anotherDeepValue2')]"
+
+export const nestedPath7 = "$.anotherLevel1.anotherLevel2.anotherObject.anotherNestedObject.anotherDeeplyNestedObject.*"
+
+export const nestedPaths = [nestedPath1, nestedPath2, nestedPath3, nestedPath4, nestedPath5, nestedPath6, nestedPath7];

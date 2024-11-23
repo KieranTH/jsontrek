@@ -192,3 +192,80 @@ export const depth = {
         ]
     }
   }
+
+  export const nested = {
+    "level1": {
+      "level2": {
+        "level3": {
+          "level4": {
+            "level5": {
+              "array": [
+                {
+                  "id": 1,
+                  "name": "Item 1",
+                  "details": {
+                    "description": "This is item 1",
+                    "values": [1, 2, 3, 4, 5]
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "Item 2",
+                  "details": {
+                    "description": "This is item 2",
+                    "values": [6, 7, 8, 9, 10]
+                  }
+                }
+              ],
+              "object": {
+                "key1": "value1",
+                "key2": "value2",
+                "nestedObject": {
+                  "nestedKey1": "nestedValue1",
+                  "nestedKey2": "nestedValue2",
+                  "deeplyNestedObject": [{
+                    "deepKey1": "deepValue1",
+                    "deepKey2": "deepValue2"
+                  }]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "anotherLevel1": {
+      "anotherLevel2": {
+        "anotherArray": [
+          {
+            "anotherId": 1,
+            "anotherName": "Another Item 1",
+            "anotherDetails": {
+              "anotherDescription": "This is another item 1",
+              "anotherValues": [11, 12, 13, 14, 15]
+            }
+          },
+          {
+            "anotherId": 2,
+            "anotherName": "Another Item 2",
+            "anotherDetails": {
+              "anotherDescription": "This is another item 2",
+              "anotherValues": [16, 17, 18, 19, 20]
+            }
+          }
+        ],
+        "anotherObject": {
+          "anotherKey1": "anotherValue1",
+          "anotherKey2": "anotherValue2",
+          "anotherNestedObject": {
+            "anotherNestedKey1": "anotherNestedValue1",
+            "anotherNestedKey2": "anotherNestedValue2",
+            "anotherDeeplyNestedObject": [{
+              "anotherDeepKey1": "anotherDeepValue1",
+              "anotherDeepKey2": "anotherDeepValue2"
+            }]
+          }
+        }
+      }
+    }
+  }
