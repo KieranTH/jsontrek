@@ -1,30 +1,12 @@
+use serde::Serialize;
 use serde_json::Value;
 use serde_json_path::JsonPath;
 use wasm_bindgen::prelude::*;
 
-// #[wasm_bindgen]
-// extern "C" {
-//     // Use `js_namespace` here to bind `console.log(..)` instead of just
-//     // `log(..)`
-//     #[wasm_bindgen(js_namespace = console)]
-//     fn log(s: &str);
 
-//     // The `console.log` is quite polymorphic, so we can bind it with multiple
-//     // signatures. Note that we need to use `js_name` to ensure we always call
-//     // `log` in JS.
-//     #[wasm_bindgen(js_namespace = console, js_name = log)]
-//     fn log_u32(a: u32);
-
-//     // Multiple arguments too!
-//     #[wasm_bindgen(js_namespace = console, js_name = log)]
-//     fn log_many(a: &str, b: &str);
-// }
-
-// macro_rules! console_log {
-//     // Note that this is using the `log` function imported above during
-//     // `bare_bones`
-//     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
-// }
+pub fn to_value<T: Serialize + ?Sized>(value: &T, serializer: &serde_wasm_bindgen::Serializer) -> Result<JsValue, serde_wasm_bindgen::Error> {
+    value.serialize(serializer)
+}
 
 
 #[wasm_bindgen]
@@ -37,6 +19,8 @@ pub fn parse(obj: JsValue, path: String) -> Vec<JsValue> {
     // Searching the path in the JSON
     let search_result = path.query(&parsed);
 
+    let serializer: serde_wasm_bindgen::Serializer = serde_wasm_bindgen::Serializer::json_compatible();
+
     // Create Vector for the search result
     let mut array = Vec::new();
     // Iterate over the search result and push the values to the vector
@@ -45,8 +29,8 @@ pub fn parse(obj: JsValue, path: String) -> Vec<JsValue> {
         let c = value.clone();
         // Check if the value is not null
         if c != Value::Null {
-            // Serialize the value to JsValue
-            let parsed = serde_wasm_bindgen::to_value(&c).unwrap();
+            // Serialize the value to JsValue - Using custom JSON Compatible serializer
+            let parsed = to_value(&c, &serializer).unwrap();
             // Push the JsValue to the vector
             array.push(parsed);
         }

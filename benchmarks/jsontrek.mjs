@@ -7,19 +7,11 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const entityJSON = require('./entity.json')
 
-function mapToJson(map) {
-    const obj = {};
-    for (const [key, value] of map) {
-        obj[key] = value instanceof Map ? mapToJson(value) : value;
-    }
-    return JSON.stringify(obj);
-}
-
 
 nestedPaths.forEach((path) => {
     console.log('Path', path)
     const result = parse(nested, path)
-    console.log('From native', mapToJson(result))
+    console.log('From native', result)
 })
 
 console.log("Depth filter")
