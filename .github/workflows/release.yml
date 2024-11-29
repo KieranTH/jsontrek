@@ -27,7 +27,7 @@ jobs:
       - name: Publish
         working-directory: ./builds/bundle/pkg
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish
   release:
     name: Release pushed tag
