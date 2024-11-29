@@ -43,7 +43,8 @@ tasks:
       - echo "Patching..."
       - git branch --show-current | grep ^releases || { echo "Not on releases branch"; exit 1; }
       - cargo bump patch
-      - git commit -m "Prepare patch v{{.VER}} for release" VERSION
+      - git add .
+      - git commit -m "Prepare patch v{{.VER}} for release"
 
   tag:
     cmds:
