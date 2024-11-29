@@ -16,7 +16,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Bundle
-        run: task build
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: task build
       - name: Publish
         working-directory: ./builds/bundle/pkg
         env:
