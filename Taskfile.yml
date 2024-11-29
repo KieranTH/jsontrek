@@ -53,6 +53,7 @@ tasks:
       - git diff --cached --quiet --exit-code
       - git tag -a v{{.VERSION}} -m "Release v{{.VERSION}}" && echo "Tagged v{{.VERSION}}"
       - git push origin v{{.VERSION}}
+      - git push
 
   release:
     cmds:
