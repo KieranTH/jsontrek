@@ -49,6 +49,7 @@ name = "jsontrek"
 version = "0.1.3"
 dependencies = [
  "log",
+ "serde",
  "serde-wasm-bindgen",
  "serde_json",
  "serde_json_path",

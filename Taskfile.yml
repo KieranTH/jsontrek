@@ -18,9 +18,10 @@ tasks:
       - wasm-pack build --target bundler --out-name bundle --out-dir ./builds/bundle/pkg
       - wasm-pack build --target web --out-name web --out-dir ./builds/web/pkg
       - wasm-pack build --target nodejs --out-name node --out-dir ./builds/node/pkg
-  test:
+  echo-test:
     cmds:
       - echo "Testing..."
+      - node ./benchmarks/jsontrek.mjs
   publish:
     dir: ./builds/bundle/pkg
     cmds:
