@@ -19,6 +19,11 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           runCmd: task build
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
       - name: Publish
         working-directory: ./builds/bundle/pkg
         env:
