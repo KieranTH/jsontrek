@@ -13,7 +13,16 @@
 			"pnpmVersion": "latest",
 			"nvmVersion": "latest"
 		},
-		"ghcr.io/eitsupi/devcontainer-features/go-task:latest": {}
+		"ghcr.io/eitsupi/devcontainer-features/go-task:latest": {},
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "1.23"
+		},
+		"ghcr.io/azutake/devcontainer-features/go-packages-install:0": {
+			"PACKAGES": "github.com/go-task/task/v3/cmd/task@latest,github.com/thisisdevelopment/bump@latest,golang.org/x/vuln/cmd/govulncheck@latest,github.com/nats-io/natscli/nats@latest"
+		},
+		"ghcr.io/wxw-matt/devcontainer-features/apt:0": {
+			"packages": "bash-completion command-not-found bind9-host iputils-ping"
+		}
 	}
 
 	// Use 'mounts' to make the cargo cache persistent in a Docker Volume.
