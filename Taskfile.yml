@@ -1,5 +1,10 @@
 version: '3'
 
+vars:
+  VERSION:
+    # sh: cargo read-manifest | jq -r .version
+    sh: cat ./VERSION
+
 tasks:
   build:
     cmds:
@@ -18,23 +23,36 @@ tasks:
       - wasm-pack build --target bundler --out-name bundle --out-dir ./builds/bundle/pkg
       - wasm-pack build --target web --out-name web --out-dir ./builds/web/pkg
       - wasm-pack build --target nodejs --out-name node --out-dir ./builds/node/pkg
+
   echo-test:
     cmds:
       - echo "Testing..."
       - node ./benchmarks/jsontrek.mjs
+
   publish:
     dir: ./builds/bundle/pkg
     cmds:
       - echo "Publishing..."
       - npm publish
+
   patch:
+    vars: 
+      VER:
+        sh: bump -b patch
     cmds:
       - echo "Patching..."
+      - git branch --show-current | grep ^releases || { echo "Not on releases branch"; exit 1; }
       - cargo bump patch
+      - git commit -m "Prepare patch v{{.VER}} for release" VERSION
+
   tag:
     cmds:
       - echo "Tagging..."
-      - git tag -a v${CARGO_PKG_VERSION} -m "v${CARGO_PKG_VERSION}"
+      - git branch --show-current | grep ^releases || { echo "Not on releases branch"; exit 1; }
+      - git diff --cached --quiet --exit-code
+      - git tag -a v{{.VERSION}} -m "Release v{{.VERSION}}" && echo "Tagged v{{.VERSION}}"
+      - git push origin v{{.VERSION}}
+
   release:
     cmds:
       - echo "Releasing..."
