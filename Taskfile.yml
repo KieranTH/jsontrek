@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 vars:
   VERSION:
@@ -15,7 +15,6 @@ tasks:
     cmds:
       - echo "Building..."
       - wasm-pack build --target nodejs --out-name node --out-dir ./builds/node/pkg
-
 
   build-all:
     cmds:
@@ -35,8 +34,14 @@ tasks:
       - echo "Publishing..."
       - npm publish
 
+  publish-web:
+    dir: ./builds/web/pkg
+    cmds:
+      - echo "Publishing..."
+      - npm publish
+
   patch:
-    vars: 
+    vars:
       VER:
         sh: bump -b patch
     cmds:
