@@ -6,7 +6,7 @@
 	"image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye",
 	"postCreateCommand": "cargo install wasm-pack; cargo install wasm-bindgen-cli; cargo install cargo-bump",
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {
+		"ghcr.io/devcontainers/features/node:2": {
 			"nodeGypDependencies": true,
 			"installYarnUsingApt": true,
 			"version": "lts",
